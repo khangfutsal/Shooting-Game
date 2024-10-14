@@ -8,6 +8,7 @@ namespace ShootingGame
         public float currentHealth { get; set; }
         public float maxHealth { get; set; }
         public void TakeDamage(float health);
+
     }
 
     public interface IShopCustomer

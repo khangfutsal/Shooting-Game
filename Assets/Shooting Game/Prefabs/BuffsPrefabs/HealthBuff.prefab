@@ -176,4 +176,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   player: {fileID: 0}
-  speed: 0
+  speed: 1

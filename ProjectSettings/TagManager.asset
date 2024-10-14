@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - HealthBuff
   - ShieldBuff
+  - SpeedBuff
   layers:
   - Default
   - TransparentFX
@@ -44,8 +45,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Collection
+    uniqueID: 677954367
+    locked: 0
   - name: Player
     uniqueID: 3508518067
+    locked: 0
+  - name: Enemy
+    uniqueID: 933051387
     locked: 0
   - name: UI
     uniqueID: 4007295499

@@ -40,12 +40,12 @@ namespace ShootingGame
             }
             if (coroutine == null)
             {
-                coroutine = StartCoroutine(DeathEffect());
+                coroutine = StartCoroutine(TakeDamageEffect());
             }
         }
 
 
-        public IEnumerator DeathEffect()
+        public IEnumerator TakeDamageEffect()
         {
             spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(0.2f);
@@ -60,7 +60,19 @@ namespace ShootingGame
 
         public void InActiveObject()
         {
+            SpawnGold();
             this.gameObject.SetActive(false);
+        }
+
+        public void SpawnGold()
+        {
+            float random = Random.value;
+            var thresh = 0.5f;
+            if(random >= thresh)
+            {
+                ObjectPool.Ins.SpawnFromPool("Gold", transform.position, Quaternion.identity);
+            }
+            
         }
         
     }

@@ -6,23 +6,30 @@ namespace ShootingGame
     public class ShopArea : MonoBehaviour
     {
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerStay2D(Collider2D collision)
         {
-            IShopCustomer shopCustomer = collision.transform.GetComponent<IShopCustomer>();
-            if (shopCustomer != null)
+            if (collision.CompareTag("Player"))
             {
-                Debug.Log("Test");
-                UIController.Ins.manager.GetShopUI().Show(shopCustomer);
+                IShopCustomer shopCustomer = collision.transform.GetComponent<IShopCustomer>();
+                if (shopCustomer != null)
+                {
+                    Debug.Log("Test");
+                    UIController.Ins.manager.GetShopUI().Show(shopCustomer);
+                }
             }
         }
 
-        private void OnCollisionExit2D(Collision2D collision)
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            IShopCustomer shopCustomer = collision.transform.GetComponent<IShopCustomer>();
-            if (shopCustomer != null)
+            if (collision.CompareTag("Player"))
             {
-                UIController.Ins.manager.GetShopUI().Hide();
+                IShopCustomer shopCustomer = collision.transform.GetComponent<IShopCustomer>();
+                if (shopCustomer != null)
+                {
+                    UIController.Ins.manager.GetShopUI().Hide();
+                }
             }
+           
         }
 
 

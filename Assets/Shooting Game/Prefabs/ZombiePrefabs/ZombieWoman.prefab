@@ -104,6 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c475c0963ab86a4d85ca170673c4a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyChase: {fileID: 0}
+  enemyAnimator: {fileID: 0}
+  enemyHealth: {fileID: 0}
+  damage: 0.5
   isDeath: 0
 --- !u!114 &1820180568793083283
 MonoBehaviour:

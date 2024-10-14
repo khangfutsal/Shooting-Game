@@ -42,7 +42,16 @@ namespace ShootingGame
                 AddBuff(shieldBuff);
 
                 collision.gameObject.SetActive(false);
+            }
+            if (collision.CompareTag(Constants.SPEDDBUFF_TAG))
+            {
+                BaseBuff baseBuff = collision.GetComponent<BaseBuff>();
+                SpeedBuff speedBuff = baseBuff as SpeedBuff;
+                Debug.Log(this.gameObject.GetComponent<Player>());
+                speedBuff.SetPlayer(this.gameObject.GetComponent<Player>());
+                AddBuff(speedBuff);
 
+                collision.gameObject.SetActive(false);
             }
         }
 

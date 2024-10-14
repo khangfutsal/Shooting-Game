@@ -15,11 +15,16 @@ namespace ShootingGame
         {
             base.ApplyBuff();
             player.ActiveShieldBuff();
+            var shieldBuff = UIController.Ins.manager.GetGamePlayUI().buffUI.GetCurBuff("Shield");
+            shieldBuff.time = buffSO.buffData.effectTime;
+            shieldBuff.Show();
         }
 
         public override void RemoveBuff()
         {
             player.RemoveShieldBuff();
+            var shieldBuff = UIController.Ins.manager.GetGamePlayUI().buffUI.GetCurBuff("Shield");
+            shieldBuff.Hide();
         }
 
     }

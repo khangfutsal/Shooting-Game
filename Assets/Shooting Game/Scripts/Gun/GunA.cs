@@ -51,10 +51,13 @@ namespace ShootingGame
         public override IEnumerator ReloadGun()
         {
             Debug.Log("Reload");
+            UIController.Ins.manager.GetGamePlayUI().ShowReloadingText();
+
             yield return new WaitForSeconds(timeReload);
             curShootTime = 0;
             curAmountOfBullet = amountOfBullet;
             coroutine = null;
+            UIController.Ins.manager.GetGamePlayUI().HideReloadingText();
 
         }
 
@@ -63,6 +66,7 @@ namespace ShootingGame
         {
             return curAmountOfBullet > 0;
         }
+
 
 
 
