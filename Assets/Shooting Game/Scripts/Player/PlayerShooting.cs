@@ -17,10 +17,11 @@ namespace ShootingGame
 
         public UnityEvent onKnock = new UnityEvent();
         public WeaponSlot curWeaponSlot;
+        public BaseGun curGun;
 
         private void Start()
         {
-            curGunId = 1;
+            SetGun(1);
         }
 
         public void HandleRotationArm()
@@ -34,32 +35,31 @@ namespace ShootingGame
         public void Shooting()
         {
             curDirection = (currentMousePos - (Vector2)transform.position).normalized;
-            BaseGun baseGun = GunController.Ins.gunManager.GetCurrentGun(curGunId);
-            if (baseGun.TryGetComponent<GunA>(out GunA gunA))
-            {
-                gunA.Shoot(curDirection, pointAttack);
-                return;
-            }
-            if (baseGun.TryGetComponent<GunB>(out GunB gunB))
-            {
-                gunB.Shoot(curDirection, pointAttack);
-                return;
-            }
-            if (baseGun.TryGetComponent<GunC>(out GunC gunC))
-            {
-                gunC.Shoot(curDirection, pointAttack);
-                return;
-            }
 
+            if (curGun != null) 
+            {
+                curGun.Shoot(curDirection, pointAttack); 
+            }
         }
 
         public void SetGun(int id)
         {
             curGunId = id;
+            BaseGun baseGun = GunController.Ins.gunManager.GetCurrentGun(curGunId); 
+
+            if (baseGun.TryGetComponent<GunA>(out GunA gunA))
+            {
+                curGun = gunA;  
+            }
+            else if (baseGun.TryGetComponent<GunB>(out GunB gunB))
+            {
+                curGun = gunB; 
+            }
+            else if (baseGun.TryGetComponent<GunC>(out GunC gunC))
+            {
+                curGun = gunC;  
+            }
         }
-
-        public int GetCurrentGun() => curGunId;
-
 
     }
 }

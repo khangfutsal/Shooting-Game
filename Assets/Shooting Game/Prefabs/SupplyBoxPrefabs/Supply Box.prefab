@@ -49,7 +49,11 @@ MonoBehaviour:
   buffs:
   - {fileID: -3059576804372343201, guid: 12cdd320953b68742bda444ef90f8291, type: 3}
   - {fileID: 1959756033917066623, guid: 54c450f09a233954686f73b11c6b21dc, type: 3}
+  - {fileID: 451203986611463099, guid: 3afb024c46ef0364289c47a81ee5eb09, type: 3}
   curBuff: {fileID: 0}
+  onCollection:
+    m_PersistentCalls:
+      m_Calls: []
   dropTime: 10
   offset: {x: -2.5, y: 5, z: 0}
 --- !u!1 &6275933195948074343

@@ -10,11 +10,17 @@ namespace ShootingGame
         public Vector2 currentVelocity;
 
         [SerializeField] private float speed;
+        [SerializeField] private float speedDefault;
         [SerializeField] private bool isFacingRight = true;
 
         private void Awake()
         {
             rgBody2D = GetComponent<Rigidbody2D>();
+        }
+
+        private void Start()
+        {
+            speedDefault = speed;
         }
 
         public void Movement(Vector2 vMove)
@@ -23,6 +29,7 @@ namespace ShootingGame
             currentVelocity = vMove.normalized;
             rgBody2D.velocity = currentVelocity * speed;
         }
+
 
         public bool IsTurnRight()
         {
@@ -45,6 +52,21 @@ namespace ShootingGame
         {
             isFacingRight = !isFacingRight; 
             transform.rotation = Quaternion.Euler(0, isFacingRight ? 0 : 180, 0);
+        }
+
+        public void SetSpeed(float speed)
+        {
+            this.speed = speed;
+        }
+
+        public void SetDefaultSpeed()
+        {
+            this.speed = speedDefault;
+        }
+
+        public void LockAxisRigidBody2D()
+        {
+            rgBody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         }
 
     }

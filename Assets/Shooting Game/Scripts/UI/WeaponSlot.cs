@@ -12,8 +12,10 @@ namespace ShootingGame
             if(!weaponSlotData.isUnlock)
             {
                 ShowUnlockImage();
+                HideGunImage();
             }
         }
+
 
         public bool GetUnlockWeapon
         {
@@ -51,6 +53,21 @@ namespace ShootingGame
         public void HideUsingImage()
         {
             weaponSlotData.usingImage.gameObject.SetActive(false);
+        }
+
+        public void ShowGunImage()
+        {
+            weaponSlotData.GunImage.gameObject.SetActive(true);
+        }
+
+        public void HideGunImage()
+        {
+            weaponSlotData.GunImage.gameObject.SetActive(false);
+        }
+
+        public void UpdateTextAmmo(int ammo)
+        {
+            weaponSlotData.textAmmo.text = ammo.ToString();
         }
 
 

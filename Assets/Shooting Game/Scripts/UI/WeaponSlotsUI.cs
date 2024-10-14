@@ -11,7 +11,6 @@ public class WeaponSlotsUI : MonoBehaviour
 
     public WeaponSlot GetWeaponSlot(int id)
     {
-        Debug.Log("Test : " + id);
         return weaponSlots.Find(_ => _.weaponSlotData.id == id);
     }
 

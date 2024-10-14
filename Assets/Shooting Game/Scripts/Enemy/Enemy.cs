@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using UnityEditor.ShaderGraph.Internal;
+
 namespace ShootingGame
 {
     public class Enemy : MonoBehaviour
@@ -13,7 +15,7 @@ namespace ShootingGame
         public EnemyAnimator enemyAnimator;
         public EnemyHealth enemyHealth;
         #endregion
-
+        [SerializeField] private float damage;
         public bool isDeath;
 
         #region Unity Component
@@ -34,13 +36,13 @@ namespace ShootingGame
 
         private void Update()
         {
-            
+
             HandleFunctionUpdate();
         }
 
         private void FixedUpdate()
         {
-           
+
             HandleFunctionFixedUpdate();
         }
 
@@ -80,6 +82,29 @@ namespace ShootingGame
         }
 
         #endregion
+
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if (collision.CompareTag("Player"))
+        //    {
+        //        ITakeDamage takeDamage = collision.GetComponent<ITakeDamage>();
+        //        takeDamage.TakeDamage(damage);
+        //    }
+        //}
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (collision.CompareTag(Constants.PLAYERTAG))
+            {
+                Player player = collision.GetComponent<Player>();
+                if (!player.isShieldActive)
+                {
+                    ITakeDamage takeDamage = player.GetComponent<ITakeDamage>();
+                    takeDamage.TakeDamage(damage);
+                }
+                
+            }
+        }
 
     }
 

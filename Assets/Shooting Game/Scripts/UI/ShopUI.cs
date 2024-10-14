@@ -4,12 +4,18 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+namespace ShootingGame
+{
+}
 public class ShopUI : MonoBehaviour
 {
     [SerializeField] private List<ItemData> items;
     [SerializeField] private Transform shopItemContainerPrefab;
     [SerializeField] private Transform shopTemplate;
+    [SerializeField] private TextMeshProUGUI curGoldText;
+
+    private Button curButtonItem;
+
 
     private IShopCustomer shopCustomer;
 
@@ -22,7 +28,7 @@ public class ShopUI : MonoBehaviour
 
     public void GenerateItems()
     {
-        for(int i=0;i<items.Count;i++)
+        for (int i = 0; i < items.Count; i++)
         {
             int index = i;
             Transform itemContainer = Instantiate(shopItemContainerPrefab, shopTemplate);
@@ -35,6 +41,7 @@ public class ShopUI : MonoBehaviour
             image.sprite = items[index].sprite;
             btnItem.onClick.AddListener(() =>
             {
+                curButtonItem = btnItem;
                 TryBuyItem(items[index]);
             });
 
@@ -43,15 +50,22 @@ public class ShopUI : MonoBehaviour
 
     public void TryBuyItem(ItemData item)
     {
-        //if (shopCustomer.TrySpendGoldAmount(item.goldAmount))
-        //{
+        if (shopCustomer.TrySpendGoldAmount(item.goldAmount))
+        {
+            curButtonItem.interactable = false;
             shopCustomer.BoughtItem(item.itemType);
-        //}
-        
+        }
+
+    }
+
+    private void Update()
+    {
+        UpdateGoldText();
     }
 
     public void Show(IShopCustomer shopCustomer)
     {
+        Debug.Log("Show shop");
         this.shopCustomer = shopCustomer;
         this.gameObject.SetActive(true);
     }
@@ -60,4 +74,10 @@ public class ShopUI : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    public void UpdateGoldText()
+    {
+        curGoldText.text = GameController.Ins.manager.GetCurrentGold().ToString();
+    }
 }
+

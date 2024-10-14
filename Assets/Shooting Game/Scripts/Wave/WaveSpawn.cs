@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 namespace ShootingGame
 {
     public class WaveSpawn : MonoBehaviour
@@ -11,9 +13,9 @@ namespace ShootingGame
         [SerializeField] private bool isSpawning;
         [SerializeField] private float delaySpawned;
 
-        [SerializeField] private bool isWon;
         [SerializeField] private Transform enemiesHolder;
         [SerializeField] private int remainingEnemies;
+        public static UnityEvent onWin = new UnityEvent();
 
 
         void Start()
@@ -37,24 +39,24 @@ namespace ShootingGame
 
                 isSpawning = false;
                 currentWaveIndex++;
-                yield return new WaitForSeconds(delaySpawned); 
+                yield return new WaitForSeconds(delaySpawned);
             }
-
-            if(remainingEnemies == 0)
-            {
-                CheckWin();
-            }
+            StartCoroutine(CheckWin());
 
         }
 
-        public void CheckWin()
+        public IEnumerator CheckWin()
         {
-            isWon = true;
+            yield return new WaitUntil(() => remainingEnemies == 0);
+            UIController.Ins.manager.GetWinUI().Show();
+            Debug.Log("WInn");
+            onWin?.Invoke();
         }
 
         public void OnEnemyDestroyed()
         {
             remainingEnemies--;
+            Debug.Log("Remain :" + remainingEnemies);
         }
 
         void SpawnEnemy(List<GameObject> enemyTypes)

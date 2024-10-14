@@ -48,6 +48,9 @@ namespace ShootingGame
 
         public abstract void HandleBullet(Vector2 direction, Transform point);
 
+        public int GetAmountOfBullet() => curAmountOfBullet;
+
+
 
 
     }

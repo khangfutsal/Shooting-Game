@@ -32,7 +32,7 @@ namespace ShootingGame
         {
             Debug.Log("Coroutine");
             yield return new WaitForSeconds(timeSpawn);
-            supplyBox.DropAnimation(posSpawn); 
+            supplyBox.DropAnimation(posSpawn);
         }
 
     }
