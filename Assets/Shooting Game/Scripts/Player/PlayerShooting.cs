@@ -13,6 +13,8 @@ namespace ShootingGame
         [SerializeField] private Transform pointAttackShotgun;
         [SerializeField] private int curGunId;
 
+        [SerializeField] private Camera camera;
+
         public Vector2 curDirection;
 
         public UnityEvent onKnock = new UnityEvent();
@@ -26,7 +28,7 @@ namespace ShootingGame
 
         public void HandleRotationArm()
         {
-            currentMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            currentMousePos = camera.ScreenToWorldPoint(Input.mousePosition);
             float angle = Mathf.Atan2(currentMousePos.y - transform.position.y, currentMousePos.x - transform.position.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
             armTf.rotation = targetRotation;

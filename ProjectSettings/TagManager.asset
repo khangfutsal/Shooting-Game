@@ -45,6 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Grounded
+    uniqueID: 2530414943
+    locked: 0
+  - name: Environment
+    uniqueID: 1274009145
+    locked: 0
+  - name: Bullet
+    uniqueID: 2796240449
+    locked: 0
   - name: Collection
     uniqueID: 677954367
     locked: 0

@@ -50,4 +50,8 @@ MonoBehaviour:
   curAmountOfBullet: 0
   timeReload: 0
   curTime: 0
+  shootTime: 0
+  curShootTime: 0
+  destroy: 0
+  damageBullet: 0
   bulletObj: {fileID: 0}

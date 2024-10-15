@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffData:
     id: 2
-    effectTime: 3
+    effectTime: 8

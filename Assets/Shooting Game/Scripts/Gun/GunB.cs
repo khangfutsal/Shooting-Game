@@ -26,6 +26,7 @@ namespace ShootingGame
             curAmountOfBullet--;
             GameObject bulletObj = ObjectPool.Ins.SpawnFromPool(base.bulletObj.name, point.position, Quaternion.identity);
             BulletB bulletB = bulletObj.GetComponent<BulletB>();
+            bulletB.damageBullet = damageBullet;
             bulletB.destroy = destroy;
             bulletB.SetSpeedBullet = speedBullet;
             bulletB.SetDirection(direction);
