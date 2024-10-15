@@ -15,11 +15,11 @@ MonoBehaviour:
   gunData:
     name: GunA
     id: 1
-    amountOfBullet: 10
-    shootTime: 0.1
+    amountOfBullet: 20
+    shootTime: 0.5
     timeReload: 3
     speedBullet: 8
-    damageBullet: 4
+    damageBullet: 5
     destroy: 5
     canShoot: 0
     bulletObj: {fileID: 2355466145164774935, guid: cdfa952d322c5bc409bea9a8f16c8012, type: 3}

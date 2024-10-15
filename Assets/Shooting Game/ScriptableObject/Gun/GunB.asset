@@ -19,7 +19,7 @@ MonoBehaviour:
     shootTime: 1
     timeReload: 3
     speedBullet: 8
-    damageBullet: 4
+    damageBullet: 5
     destroy: 5
     canShoot: 0
     bulletObj: {fileID: 963472418683073575, guid: 248835549462c9a40ba3dbe5c0b04dd7, type: 3}

@@ -44,6 +44,19 @@ namespace ShootingGame
             isActive = false;
             ObjectPool.Ins.ReturnToPool("Bullet2", this.gameObject);
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag(Constants.ENEMYTAG))
+            {
+                Debug.Log("ENemy");
+                ITakeDamage damage = collision.GetComponent<ITakeDamage>();
+                if (damage != null)
+                {
+                    damage.TakeDamage(damageBullet);
+                }
+            }
+        }
     }
 }
 
